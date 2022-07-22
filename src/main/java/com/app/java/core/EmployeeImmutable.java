@@ -1,10 +1,6 @@
 package com.app.java.core;
 
-import lombok.Data;
-import lombok.Getter;
-
 import java.util.*;
-import java.util.stream.Collectors;
 
 public final class EmployeeImmutable {
 
@@ -20,7 +16,7 @@ public final class EmployeeImmutable {
 
     private final Date joiningDate;
 
-    public EmployeeImmutable(int empId, String name, long salary, Date joiningDate, List<String> degrees, Map<String, Integer> metaData){
+    public EmployeeImmutable(int empId, String name, long salary, Date joiningDate, List<String> degrees, Map<String, Integer> metaData) {
         this.empId = empId;
         this.name = name;
         this.salary = salary;
@@ -28,7 +24,7 @@ public final class EmployeeImmutable {
         Map<String, Integer> tempMap = new HashMap<>();
         metaData.entrySet().stream().map(stringIntegerEntry -> tempMap.put(stringIntegerEntry.getKey(), stringIntegerEntry.getValue()));
         this.metaData = tempMap;
-        this.joiningDate = joiningDate;
+        this.joiningDate = new Date(this.getJoiningDate().getTime());
     }
 
     public int getEmpId() {
